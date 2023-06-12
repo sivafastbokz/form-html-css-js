@@ -8,11 +8,18 @@
 </head>
 <body>
     <form>
-        <input type="text" class="input" id='username'placeholder="enter your name" ></input>
+        <input type="text" class="input" id='username'placeholder="enter your name" onchange="uppercase()"></input>
         <input type="button" class="button" id="btn" value="ADD">
-        <input type="text" class="input" id="onchange" placeholder="enter your name" onchange=getvalue()>
+        <input type="text" class="input" id="name" placeholder="enter your name" onkeypress=getvalue()>
+        <button onclick="this.innerHTML=Date()">time</button>
+        <button id="cal">try it</button>
     </form>
     <p id="output"></p>
+    <p id="time"></p>
+    <p onclick="this.innerHTML='you clicked me'">click me</p>
+    <p onmouseover="mouseevent(this)" onmouseout="mouseout(this)">mouse movement</p>
+    <p id="num"></p>
+    <p id="demoText"></p>
     <script>
         const text = document.getElementById("username");
         const button =document.getElementById("btn");
@@ -24,10 +31,38 @@
         button.addEventListener('click',display)
 
         function getvalue(){
-            var inputelement =document.getElementById('onchange');
-            var value = inputelement.value
-            console.log(value)
+            var inputelement =document.getElementById('name');
+            console.log('siva',inputelement.value)
+            // demoText.innerHTML = inputelement.value
+            demoText.textContent = "Input value: " +  inputelement.value;
+
+            
+            
         }
+        function uppercase(){
+            const x = document.getElementById('username');
+            x.value=x.value.toUpperCase();
+        }
+        function mouseevent(obj){
+             obj.innerHTML='you move over me'
+        }
+        function mouseout(obj){
+            obj.innerHTML="mouse movement"
+        }
+
+        var p1=6;
+        var p2=8;
+
+        document.getElementById("cal").addEventListener("click", function() {
+          myFunction(p1, p2);
+          });
+
+
+        function myFunction(a,b){
+            document.getElementById('num').innerHTML=a*b
+        }
+
+          
     </script>
 </body>
 </html>
